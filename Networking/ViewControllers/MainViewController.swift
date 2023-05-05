@@ -19,13 +19,13 @@ enum Link {
         case .imageURL:
             return URL(string: "https://img.freepik.com/premium-photo/aurora-borealis-northern-lights-and-beautiful-star-on-night-sky-background-realistic-2d-illustration_67092-1103.jpg")!
         case .courseURL:
-            return URL(string: "")!
+            return URL(string: "https://swiftbook.ru//wp-content/uploads/api/api_course")!
         case .coursesURL:
-            return URL(string: "")!
+            return URL(string: "https://swiftbook.ru//wp-content/uploads/api/api_courses")!
         case .aboutUsURL:
-            return URL(string: "")!
+            return URL(string: "https://swiftbook.ru//wp-content/uploads/api/api_website_description")!
         case .aboutUsURL2:
-            return URL(string: "")!
+            return URL(string: "https://swiftbook.ru//wp-content/uploads/api/api_missing_or_wrong_fields")!
         }
     }
 }
@@ -52,6 +52,29 @@ enum UserAction: CaseIterable {
             return "About SwiftBook 2"
         case .showCourses:
             return "Show Courses"
+        }
+    }
+}
+
+enum Alert {
+    case success
+    case failed
+    
+    var title: String {
+        switch self {
+        case .success:
+            return "Success"
+        case .failed:
+            return "Failed"
+        }
+    }
+    
+    var message: String {
+        switch self {
+        case .success:
+            return "You can see the results in the Debug area"
+        case .failed:
+            return "You can see error in the Debug area"
         }
     }
 }
@@ -109,7 +132,21 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Networking
 extension MainViewController {
     private func fetchCourse() {
-        
+        URLSession.shared.dataTask(with: Link.courseURL.url) { data, _, error in
+            guard let data else {
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let course = try decoder.decode(Course.self, from: data)
+                print(course)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     private func fetchCourses() {

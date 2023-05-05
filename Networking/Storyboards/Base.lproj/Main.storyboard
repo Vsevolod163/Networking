@@ -146,8 +146,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h0x-tL-oTB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h0x-tL-oTB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="CsP-Aa-dko">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
@@ -158,10 +158,10 @@
                         <constraints>
                             <constraint firstItem="CsP-Aa-dko" firstAttribute="centerY" secondItem="nj1-aG-oYW" secondAttribute="centerY" id="AQg-tn-KzL"/>
                             <constraint firstItem="CsP-Aa-dko" firstAttribute="centerX" secondItem="nj1-aG-oYW" secondAttribute="centerX" id="R9W-K3-ucL"/>
-                            <constraint firstItem="Gef-tp-7hf" firstAttribute="bottom" secondItem="h0x-tL-oTB" secondAttribute="bottom" id="Xae-cY-KfN"/>
-                            <constraint firstItem="h0x-tL-oTB" firstAttribute="leading" secondItem="Gef-tp-7hf" secondAttribute="leading" id="ZhI-Zu-cZ0"/>
-                            <constraint firstItem="h0x-tL-oTB" firstAttribute="top" secondItem="Gef-tp-7hf" secondAttribute="top" id="m9A-3M-Twe"/>
-                            <constraint firstItem="Gef-tp-7hf" firstAttribute="trailing" secondItem="h0x-tL-oTB" secondAttribute="trailing" id="yLd-7f-Jsa"/>
+                            <constraint firstAttribute="bottom" secondItem="h0x-tL-oTB" secondAttribute="bottom" id="Xae-cY-KfN"/>
+                            <constraint firstItem="h0x-tL-oTB" firstAttribute="leading" secondItem="nj1-aG-oYW" secondAttribute="leading" id="ZhI-Zu-cZ0"/>
+                            <constraint firstItem="h0x-tL-oTB" firstAttribute="top" secondItem="nj1-aG-oYW" secondAttribute="top" id="m9A-3M-Twe"/>
+                            <constraint firstAttribute="trailing" secondItem="h0x-tL-oTB" secondAttribute="trailing" id="yLd-7f-Jsa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ff8-5K-ovO"/>
@@ -182,6 +182,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uww-la-3UW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
