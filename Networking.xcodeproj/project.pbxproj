@@ -56,15 +56,47 @@
 		C6B1F10D2A0505A700916639 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				C6B1F10E2A0505A700916639 /* AppDelegate.swift */,
-				C6B1F1102A0505A700916639 /* SceneDelegate.swift */,
-				C6B1F1122A0505A700916639 /* ViewController.swift */,
-				C6B1F1142A0505A700916639 /* Main.storyboard */,
-				C6B1F1172A0505A800916639 /* Assets.xcassets */,
-				C6B1F1192A0505A800916639 /* LaunchScreen.storyboard */,
-				C6B1F11C2A0505A800916639 /* Info.plist */,
+				C6B1F1252A0505E500916639 /* ViewControllers */,
+				C6B1F1242A0505DD00916639 /* Storyboards */,
+				C6B1F1232A0505D100916639 /* Sources */,
+				C6B1F1222A0505C700916639 /* App */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		C6B1F1222A0505C700916639 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C6B1F10E2A0505A700916639 /* AppDelegate.swift */,
+				C6B1F1102A0505A700916639 /* SceneDelegate.swift */,
+				C6B1F11C2A0505A800916639 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C6B1F1232A0505D100916639 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C6B1F1172A0505A800916639 /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C6B1F1242A0505DD00916639 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C6B1F1142A0505A700916639 /* Main.storyboard */,
+				C6B1F1192A0505A800916639 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C6B1F1252A0505E500916639 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6B1F1122A0505A700916639 /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,12 +321,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W83LB3ZRMV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = Networking/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +334,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lashin.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +352,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W83LB3ZRMV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = Networking/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +365,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lashin.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
