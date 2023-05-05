@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CoursesViewController: UITableViewController {
+final class CoursesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

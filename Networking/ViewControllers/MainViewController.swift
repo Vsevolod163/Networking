@@ -49,6 +49,19 @@ final class MainViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let userAction = userActions[indexPath.item]
+        
+        switch userAction {
+        case .showImage: performSegue(withIdentifier: "showImage", sender: nil)
+        case .fetchCourse: fetchCourse()
+        case .fetchCourses: fetchCourses()
+        case .aboutSwiftBook: fetchInfoAbout()
+        case .aboutSwiftBook2: fetchInfoAboutUsWithEmptyFields()
+        case .showCourses: performSegue(withIdentifier: "showCourses", sender: nil)
+        }
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -67,5 +80,24 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width - 48, height: 100)
+    }
+}
+
+// MARK: - Networking
+extension MainViewController {
+    private func fetchCourse() {
+        
+    }
+    
+    private func fetchCourses() {
+        
+    }
+    
+    private func fetchInfoAbout() {
+        
+    }
+    
+    private func fetchInfoAboutUsWithEmptyFields() {
+        
     }
 }

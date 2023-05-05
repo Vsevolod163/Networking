@@ -7,11 +7,17 @@
 
 import UIKit
 
-class ImageViewController: UIViewController {
-
+final class ImageViewController: UIViewController {
+    
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
     }
 
+    
+    
 }
