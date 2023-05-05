@@ -108,6 +108,14 @@ final class MainViewController: UICollectionViewController {
         }
     }
     
+    private func showAlert(withStatus status: Alert) {
+        let alert = UIAlertController(title: status.title, message: status.message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        DispatchQueue.main.async { [unowned self] in
+            present(alert, animated: true)
+        }
+    }
     /*
      // MARK: - Navigation
      
@@ -132,7 +140,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Networking
 extension MainViewController {
     private func fetchCourse() {
-        URLSession.shared.dataTask(with: Link.courseURL.url) { data, _, error in
+        URLSession.shared.dataTask(with: Link.courseURL.url) { [weak self] data, _, error in
             guard let data else {
                 print(error?.localizedDescription ?? "No error description")
                 return
@@ -142,22 +150,68 @@ extension MainViewController {
                 let decoder = JSONDecoder()
                 let course = try decoder.decode(Course.self, from: data)
                 print(course)
-                
+                self?.showAlert(withStatus: .success)
             } catch {
                 print(error.localizedDescription)
+                self?.showAlert(withStatus: .failed)
             }
-        }
+        }.resume()
     }
     
     private func fetchCourses() {
-        
+        URLSession.shared.dataTask(with: Link.coursesURL.url) { [weak self] data, _, error in
+            guard let data else {
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let courses = try decoder.decode([Course].self, from: data)
+                print(courses)
+                self?.showAlert(withStatus: .success)
+            } catch {
+                print(error.localizedDescription)
+                self?.showAlert(withStatus: .failed)
+            }
+        }.resume()
     }
     
     private func fetchInfoAbout() {
-        
+        URLSession.shared.dataTask(with: Link.aboutUsURL.url) { [weak self] data, _, error in
+            guard let data else {
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let sbInfo = try decoder.decode(SwiftBookInfo.self, from: data)
+                print(sbInfo)
+                self?.showAlert(withStatus: .success)
+            } catch {
+                print(error.localizedDescription)
+                self?.showAlert(withStatus: .failed)
+            }
+        }.resume()
     }
     
     private func fetchInfoAboutUsWithEmptyFields() {
-        
+        URLSession.shared.dataTask(with: Link.aboutUsURL2.url) { [weak self] data, _, error in
+            guard let data else {
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let sbInfo = try decoder.decode(SwiftBookInfo.self, from: data)
+                print(sbInfo)
+                self?.showAlert(withStatus: .success)
+            } catch {
+                print(error.localizedDescription)
+                self?.showAlert(withStatus: .failed)
+            }
+        }.resume()
     }
 }

@@ -9,7 +9,13 @@ import Foundation
 
 struct Course: Decodable {
     let name: String
-    let imageUrL: URL
+    let imageUrl: URL
     let number_of_lessons: Int
     let number_of_tests: Int
+}
+
+struct SwiftBookInfo: Decodable {
+    let courses: [Course]
+    let websiteDescription: String
+    let websiteName: String
 }
