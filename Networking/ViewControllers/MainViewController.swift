@@ -7,11 +7,46 @@
 
 import UIKit
 
+enum UserAction: CaseIterable {
+    case showImage
+    case fetchCourse
+    case fetchCourses
+    case aboutSwiftBook
+    case aboutSwiftBook2
+    case showCourses
+    
+    var title: String {
+        switch self {
+        case .showImage:
+            return "Show Image"
+        case .fetchCourse:
+            return "Fetch Course"
+        case .fetchCourses:
+            return "Fetch Courses"
+        case .aboutSwiftBook:
+            return "About SwiftBook"
+        case .aboutSwiftBook2:
+            return "About SwiftBook 2"
+        case .showCourses:
+            return "Show Courses"
+        }
+    }
+}
+
 final class MainViewController: UICollectionViewController {
 
+    private let userActions = UserAction.allCases
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        userActions.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userAction", for: indexPath)
+        guard let cell = cell as? UserActionCell else { return UICollectionViewCell() }
+        cell.userActionLabel.text = userActions[indexPath.item].title
+        
+        return cell
     }
     
     /*
@@ -24,13 +59,6 @@ final class MainViewController: UICollectionViewController {
      }
      */
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userAction", for: indexPath)
-        
-        // Configure the cell
-        
-        return cell
-    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

@@ -49,6 +49,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="userActionLabel" destination="b6o-an-YIi" id="5wC-ae-Opx"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
