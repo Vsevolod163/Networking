@@ -7,6 +7,29 @@
 
 import UIKit
 
+enum Link {
+    case imageURL
+    case courseURL
+    case coursesURL
+    case aboutUsURL
+    case aboutUsURL2
+    
+    var url: URL {
+        switch self {
+        case .imageURL:
+            return URL(string: "https://img.freepik.com/premium-photo/aurora-borealis-northern-lights-and-beautiful-star-on-night-sky-background-realistic-2d-illustration_67092-1103.jpg")!
+        case .courseURL:
+            return URL(string: "")!
+        case .coursesURL:
+            return URL(string: "")!
+        case .aboutUsURL:
+            return URL(string: "")!
+        case .aboutUsURL2:
+            return URL(string: "")!
+        }
+    }
+}
+
 enum UserAction: CaseIterable {
     case showImage
     case fetchCourse
