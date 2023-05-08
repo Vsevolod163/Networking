@@ -125,7 +125,6 @@ final class MainViewController: UICollectionViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
