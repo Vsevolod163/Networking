@@ -10,8 +10,15 @@ import Foundation
 struct Course: Decodable {
     let name: String
     let imageUrl: URL
-    let number_of_lessons: Int
-    let number_of_tests: Int
+    let numberOfLessons: Int
+    let numberOfTests: Int
+    
+//    enum CodingKeys: String, CodingKey {
+//        case name = "Name"
+//        case imageUrl = "ImageUrl"
+//        case numberOfLessons = "NumberOfLessons"
+//        case numberOfTests = "NumberOfTests"
+//    }
 }
 
 struct SwiftBookInfo: Decodable {
