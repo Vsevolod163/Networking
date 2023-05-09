@@ -78,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="106" id="plh-Y3-4Ja" customClass="CourseCell" customModule="Networking" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseCell" rowHeight="106" id="plh-Y3-4Ja" customClass="CourseCell" customModule="Networking" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="375" height="106"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="plh-Y3-4Ja" id="41J-Yf-Feo">
@@ -125,6 +125,12 @@
                                         <constraint firstAttribute="trailing" secondItem="uKG-My-ppT" secondAttribute="trailing" constant="16" id="xjk-MW-tXU"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="courseImage" destination="AMB-QE-Arf" id="pJP-NI-dK4"/>
+                                    <outlet property="courseNameLabel" destination="ag5-lG-tzf" id="LS7-xY-1QH"/>
+                                    <outlet property="numberOfLessons" destination="kNQ-Mb-WfD" id="8L3-Nf-xiO"/>
+                                    <outlet property="numberOfTests" destination="uKG-My-ppT" id="YaN-hg-Nr5"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

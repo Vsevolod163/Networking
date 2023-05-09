@@ -9,14 +9,8 @@ import UIKit
 
 final class CourseCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
+    @IBOutlet var courseImage: UIImageView!
+    @IBOutlet var courseNameLabel: UILabel!
+    @IBOutlet var numberOfLessons: UILabel!
+    @IBOutlet var numberOfTests: UILabel!
 }
