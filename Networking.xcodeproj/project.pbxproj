@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C65074482A0AA050000E88EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65074472A0AA050000E88EF /* NetworkManager.swift */; };
 		C66FB74A2A052BC200E5A054 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66FB7492A052BC200E5A054 /* Course.swift */; };
 		C6B1F10F2A0505A700916639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1F10E2A0505A700916639 /* AppDelegate.swift */; };
 		C6B1F1112A0505A700916639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1F1102A0505A700916639 /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C65074472A0AA050000E88EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C66FB7492A052BC200E5A054 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		C6B1F10B2A0505A700916639 /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B1F10E2A0505A700916639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C65074462A0AA025000E88EF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C65074472A0AA050000E88EF /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		C66FB7482A052BB500E5A054 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 				C66FB7482A052BB500E5A054 /* Models */,
 				C6B1F1282A050B7000916639 /* Views */,
 				C6B1F1252A0505E500916639 /* ViewControllers */,
+				C65074462A0AA025000E88EF /* Services */,
 				C6B1F1242A0505DD00916639 /* Storyboards */,
 				C6B1F1232A0505D100916639 /* Sources */,
 				C6B1F1222A0505C700916639 /* App */,
@@ -201,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C65074482A0AA050000E88EF /* NetworkManager.swift in Sources */,
 				C66FB74A2A052BC200E5A054 /* Course.swift in Sources */,
 				C6B1F12C2A050BF300916639 /* UserActionCell.swift in Sources */,
 				C6B1F1302A050C4B00916639 /* CoursesViewController.swift in Sources */,

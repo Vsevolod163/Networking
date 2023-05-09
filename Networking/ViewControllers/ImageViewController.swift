@@ -12,6 +12,8 @@ final class ImageViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
+    private let networkManager = NetworkManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
@@ -20,18 +22,9 @@ final class ImageViewController: UIViewController {
     }
 
     private func fetchImage() {
-        URLSession.shared.dataTask(with: Link.imageURL.url) { [weak self] data, response, error in
-            guard let data, let response else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            print(response)
-            
-            DispatchQueue.main.async {
-                self?.imageView.image = UIImage(data: data)
-                self?.activityIndicator.stopAnimating()
-            }
-        }.resume()
+        networkManager.fetchImage(from: Link.imageURL.url) { [weak self] imageData in
+            self?.imageView.image = UIImage(data: imageData)
+            self?.activityIndicator.stopAnimating()
+        }
     }
 }
