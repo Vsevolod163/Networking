@@ -13,7 +13,7 @@ final class CoursesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.rowHeight = 100
     }
 
     // MARK: - Table view data source
@@ -23,10 +23,15 @@ final class CoursesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "courseCell", for: indexPath)
-        
-        
+        guard let cell = cell as? CourseCell else { return UITableViewCell() }
+        let course = courses[indexPath.row]
+        cell.configure(with: course)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -42,9 +47,12 @@ extension CoursesViewController {
             do {
                 let decoder = JSONDecoder()
                 self?.courses = try decoder.decode([Course].self, from: data)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             } catch {
                 print(error)
             }
-        }
+        }.resume()
     }
 }
