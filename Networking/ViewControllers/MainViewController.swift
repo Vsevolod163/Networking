@@ -82,6 +82,7 @@ enum Alert {
 final class MainViewController: UICollectionViewController {
 
     private let userActions = UserAction.allCases
+    
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         userActions.count
@@ -116,15 +117,15 @@ final class MainViewController: UICollectionViewController {
             present(alert, animated: true)
         }
     }
-    /*
+
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
+         if segue.identifier == "showCourses" {
+             guard let coursesVC = segue.destination as? CoursesViewController else { return }
+             coursesVC.fetchCourses()
+         }
      }
-     */
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
