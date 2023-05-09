@@ -59,6 +59,7 @@ enum Alert {
 final class MainViewController: UICollectionViewController {
 
     private let userActions = UserAction.allCases
+    private let networkManager = NetworkManager.shared
     
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,78 +118,54 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Networking
 extension MainViewController {
     private func fetchCourse() {
-        URLSession.shared.dataTask(with: Link.courseURL.url) { [weak self] data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let course = try decoder.decode(Course.self, from: data)
+        networkManager.fetch(Course.self, from: Link.courseURL.url) { [weak self] result in
+            switch result {
+            case .success(let course):
                 print(course)
                 self?.showAlert(withStatus: .success)
-            } catch {
-                print(error.localizedDescription)
+            case .failure(let error):
+                print(error)
                 self?.showAlert(withStatus: .failed)
             }
-        }.resume()
+        }
     }
     
     private func fetchCourses() {
-        URLSession.shared.dataTask(with: Link.coursesURL.url) { [weak self] data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let courses = try decoder.decode([Course].self, from: data)
+        networkManager.fetch([Course].self, from: Link.coursesURL.url) { [weak self] result in
+            switch result {
+            case .success(let courses):
                 print(courses)
                 self?.showAlert(withStatus: .success)
-            } catch {
-                print(error.localizedDescription)
+            case .failure(let error):
+                print(error)
                 self?.showAlert(withStatus: .failed)
             }
-        }.resume()
+        }
     }
     
     private func fetchInfoAbout() {
-        URLSession.shared.dataTask(with: Link.aboutUsURL.url) { [weak self] data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let sbInfo = try decoder.decode(SwiftBookInfo.self, from: data)
-                print(sbInfo)
+        networkManager.fetch(SwiftBookInfo.self, from: Link.aboutUsURL.url) { [weak self] result in
+            switch result {
+            case .success(let info):
+                print(info)
                 self?.showAlert(withStatus: .success)
-            } catch {
-                print(error.localizedDescription)
+            case .failure(let error):
+                print(error)
                 self?.showAlert(withStatus: .failed)
             }
-        }.resume()
+        }
     }
     
     private func fetchInfoAboutUsWithEmptyFields() {
-        URLSession.shared.dataTask(with: Link.aboutUsURL2.url) { [weak self] data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let sbInfo = try decoder.decode(SwiftBookInfo.self, from: data)
-                print(sbInfo)
+        networkManager.fetch(SwiftBookInfo.self, from: Link.aboutUsURL2.url) { [weak self] result in
+            switch result {
+            case .success(let info):
+                print(info)
                 self?.showAlert(withStatus: .success)
-            } catch {
-                print(error.localizedDescription)
+            case .failure(let error):
+                print(error)
                 self?.showAlert(withStatus: .failed)
             }
-        }.resume()
+        }
     }
 }
