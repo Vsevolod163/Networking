@@ -30,16 +30,25 @@ enum Link {
     }
 }
 
+enum NetworkError: Error {
+    case invalidURL
+    case noData
+    case decodingError
+}
+
 final class NetworkManager {
     static let shared = NetworkManager()
     
     private init() {}
     
-    func fetchImage(from url: URL, completion: @escaping (Data) -> Void) {
+    func fetchImage(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: url) else { return }
+            guard let imageData = try? Data(contentsOf: url) else {
+                completion(.failure(.noData))
+                return
+            }
             DispatchQueue.main.async {
-                completion(imageData)
+                completion(.success(imageData))
             }
         }
     }

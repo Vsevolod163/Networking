@@ -21,8 +21,13 @@ final class CourseCell: UITableViewCell {
         numberOfLessons.text = "Number of lessons: \(course.numberOfLessons)"
         numberOfTests.text = "Number of tests: \(course.numberOfTests)"
         
-        networkManager.fetchImage(from: course.imageUrl) { [weak self] imageData in
-            self?.courseImage.image = UIImage(data: imageData)
+        networkManager.fetchImage(from: course.imageUrl) { [weak self] result in
+            switch result {
+            case .success(let imageData):
+                self?.courseImage.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

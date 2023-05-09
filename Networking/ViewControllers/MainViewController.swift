@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum UserAction: CaseIterable {
     case showImage
     case fetchCourse
