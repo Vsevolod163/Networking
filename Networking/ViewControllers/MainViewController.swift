@@ -168,4 +168,12 @@ extension MainViewController {
             }
         }
     }
+    
+    private func postRequestWithDict() {
+        
+    }
+    
+    private func postRequestWithModel() {
+        
+    }
 }

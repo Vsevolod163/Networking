@@ -73,4 +73,31 @@ final class NetworkManager {
             }
         }.resume()
     }
+    
+    func postRequest(with parameters: [String: Any],
+                     to url: URL,
+                     completion: @escaping (Result<Any, NetworkError>) -> Void) {
+        let serialisedData = try? JSONSerialization.data(withJSONObject: parameters)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = serialisedData
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data, let response else {
+                completion(.failure(.noData))
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            print(response)
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data)
+                completion(.success(json))
+            } catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+    }
 }
