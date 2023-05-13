@@ -14,6 +14,8 @@ enum UserAction: CaseIterable {
     case aboutSwiftBook
     case aboutSwiftBook2
     case showCourses
+    case postRequestWithDict
+    case postRequestWithModel
     
     var title: String {
         switch self {
@@ -29,6 +31,10 @@ enum UserAction: CaseIterable {
             return "About SwiftBook 2"
         case .showCourses:
             return "Show Courses"
+        case .postRequestWithDict:
+            return "POST RQST with Dict"
+        case .postRequestWithModel:
+            return "POST RQST with Model"
         }
     }
 }
@@ -84,6 +90,8 @@ final class MainViewController: UICollectionViewController {
         case .aboutSwiftBook: fetchInfoAbout()
         case .aboutSwiftBook2: fetchInfoAboutUsWithEmptyFields()
         case .showCourses: performSegue(withIdentifier: "showCourses", sender: nil)
+        case .postRequestWithDict: postRequestWithDict()
+        case .postRequestWithModel: postRequestWithModel()
         }
     }
     
@@ -170,10 +178,40 @@ extension MainViewController {
     }
     
     private func postRequestWithDict() {
+        let parameters = [
+            "name": "Networking",
+            "imageUrl": "image url",
+            "numberOfLessons": "10",
+            "numberOfTests": "8"
+        ]
         
+        networkManager.postRequest(with: parameters, to: Link.postRequest.url) { [weak self] result in
+            switch result {
+            case .success(let json):
+                print(json)
+                self?.showAlert(withStatus: .success)
+            case .failure(let error):
+                print(error)
+                self?.showAlert(withStatus: .failed)
+            }
+        }
     }
     
     private func postRequestWithModel() {
+        let course = Course(
+            name: "Networking",
+            imageUrl: Link.courseImageURL.url,
+            numberOfLessons: 10,
+            numberOfTests: 5
+        )
         
+        networkManager.postRequest(with: course, to: Link.postRequest.url) { result in
+            switch result {
+            case .success(let course):
+                print(course)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

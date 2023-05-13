@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Course: Decodable {
+struct Course: Codable {
     let name: String
     let imageUrl: URL
     let numberOfLessons: Int
@@ -21,7 +21,7 @@ struct Course: Decodable {
 //    }
 }
 
-struct SwiftBookInfo: Decodable {
+struct SwiftBookInfo: Codable {
     let courses: [Course]
     let websiteDescription: String
     let websiteName: String

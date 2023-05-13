@@ -13,6 +13,8 @@ enum Link {
     case coursesURL
     case aboutUsURL
     case aboutUsURL2
+    case postRequest
+    case courseImageURL
     
     var url: URL {
         switch self {
@@ -26,6 +28,10 @@ enum Link {
             return URL(string: "https://swiftbook.ru//wp-content/uploads/api/api_website_description")!
         case .aboutUsURL2:
             return URL(string: "https://swiftbook.ru//wp-content/uploads/api/api_missing_or_wrong_fields")!
+        case .postRequest:
+            return URL(string: "https://jsonplaceholder.typicode.com/posts")!
+        case .courseImageURL:
+            return URL(string: "https://swiftbook.ru/wp-content/uploads/sites/2/2018/08/notifications-course-with-background.png")!
         }
     }
 }
@@ -82,6 +88,7 @@ final class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = serialisedData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data, let response else {
@@ -95,6 +102,33 @@ final class NetworkManager {
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
                 completion(.success(json))
+            } catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+    }
+    
+    func postRequest(with parameters: Course, to url: URL, completion: @escaping(Result<Any, NetworkError>) -> Void) {
+        guard let encodedJSON = try? JSONEncoder().encode(parameters) else {
+            completion(.failure(.noData))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = encodedJSON
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data else {
+                completion(.failure(.noData))
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+                
+            do {
+                let course = try JSONDecoder().decode(Course.self, from: data)
+                completion(.success(course))
             } catch {
                 completion(.failure(.decodingError))
             }
